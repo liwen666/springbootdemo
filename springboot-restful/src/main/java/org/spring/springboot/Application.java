@@ -1,5 +1,6 @@
 package org.spring.springboot;
 
+import com.spring4all.swagger.EnableSwagger2Doc;
 import org.mybatis.spring.annotation.MapperScan;
 import org.spring.springboot.dao.CityDao;
 import org.spring.springboot.domain.City;
@@ -13,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Created by bysocket on 16/4/26.
  */
 // Spring Boot 应用的标识
+@EnableSwagger2Doc
 @SpringBootApplication
 // mapper 接口类扫描包配置
 @MapperScan("org.spring.springboot.dao")

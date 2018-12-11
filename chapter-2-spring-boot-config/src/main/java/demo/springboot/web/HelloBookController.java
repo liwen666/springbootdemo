@@ -2,8 +2,9 @@ package demo.springboot.web;
 
 import demo.springboot.config.BookProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * Spring Boot Hello案例
@@ -18,6 +19,20 @@ public class HelloBookController {
 
     @GetMapping("/book/hello")
     public String sayHello() {
+        return "Hello， " + bookProperties.getWriter() + " is writing "
+                + bookProperties.getName() + " ！";
+    }
+    @GetMapping("/book/putVal/{val}")
+    public String putVal (@PathVariable("val") String val) {
+        System.out.println(val);
+        return "Hello， " + bookProperties.getWriter() + " is writing "
+                + bookProperties.getName() + " ！";
+    }
+    @RequestMapping("/book/putObj/")
+    public String putObj (@RequestBody Map<String,Object> val) {
+
+        System.out.println(val);
+        System.out.println(val.get("a"));
         return "Hello， " + bookProperties.getWriter() + " is writing "
                 + bookProperties.getName() + " ！";
     }

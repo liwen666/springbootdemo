@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 城市 Controller 实现 Restful HTTP 服务
@@ -31,6 +32,7 @@ public class CityRestController {
 
     @RequestMapping(value = "/api/city", method = RequestMethod.POST)
     public void createCity(@RequestBody City city) {
+        System.out.println(city);
         cityService.saveCity(city);
     }
 
@@ -42,5 +44,10 @@ public class CityRestController {
     @RequestMapping(value = "/api/city/{id}", method = RequestMethod.DELETE)
     public void modifyCity(@PathVariable("id") Long id) {
         cityService.deleteCity(id);
+    }
+    @RequestMapping(value = "/api/mapVal", method = RequestMethod.POST)
+    public void queryMap(@RequestBody Map<String ,Object> map) {
+        System.out.println(map);
+//        cityService.saveCity(city);
     }
 }
